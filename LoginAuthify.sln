@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35806.99 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginAuthify", "LoginAuthify\LoginAuthify.csproj", "{AA2BED11-B5FA-49F9-A601-997A336BA2D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginAuthify.Google", "LoginAuthify.Google\LoginAuthify.Google.csproj", "{35E76F30-9167-47D7-A110-77947143651B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginAuthify.GitHub", "LoginAuthify.GitHub\LoginAuthify.GitHub.csproj", "{ECF77DC5-9C8C-4B7A-BAA1-DE630AF980A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginAuthify.Facebook", "LoginAuthify.Facebook\LoginAuthify.Facebook.csproj", "{C480BDF4-F932-44F9-8558-CBA7B7FEF710}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginAuthify.SAML", "LoginAuthify.SAML\LoginAuthify.SAML.csproj", "{810E4219-E6E3-4456-A14A-E06A26F692A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginAuthify.OAuth2", "LoginAuthify.OAuth2\LoginAuthify.OAuth2.csproj", "{D66F33EA-2BDD-4274-B6FD-E8CA789F5915}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA2BED11-B5FA-49F9-A601-997A336BA2D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA2BED11-B5FA-49F9-A601-997A336BA2D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA2BED11-B5FA-49F9-A601-997A336BA2D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA2BED11-B5FA-49F9-A601-997A336BA2D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35E76F30-9167-47D7-A110-77947143651B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35E76F30-9167-47D7-A110-77947143651B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35E76F30-9167-47D7-A110-77947143651B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35E76F30-9167-47D7-A110-77947143651B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECF77DC5-9C8C-4B7A-BAA1-DE630AF980A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECF77DC5-9C8C-4B7A-BAA1-DE630AF980A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECF77DC5-9C8C-4B7A-BAA1-DE630AF980A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECF77DC5-9C8C-4B7A-BAA1-DE630AF980A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C480BDF4-F932-44F9-8558-CBA7B7FEF710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C480BDF4-F932-44F9-8558-CBA7B7FEF710}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C480BDF4-F932-44F9-8558-CBA7B7FEF710}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C480BDF4-F932-44F9-8558-CBA7B7FEF710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{810E4219-E6E3-4456-A14A-E06A26F692A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{810E4219-E6E3-4456-A14A-E06A26F692A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{810E4219-E6E3-4456-A14A-E06A26F692A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{810E4219-E6E3-4456-A14A-E06A26F692A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D66F33EA-2BDD-4274-B6FD-E8CA789F5915}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D66F33EA-2BDD-4274-B6FD-E8CA789F5915}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D66F33EA-2BDD-4274-B6FD-E8CA789F5915}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D66F33EA-2BDD-4274-B6FD-E8CA789F5915}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B8A42ADF-0089-4B5A-9056-2BB4AFDA049F}
+	EndGlobalSection
+EndGlobal

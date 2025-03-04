@@ -1,0 +1,26 @@
+﻿🔹 Displays logged-in user's email, profile picture, linked accounts.
+🔹 Allows users to manage their authentication methods.
+
+@model List<UserProfile>
+
+<h2>Profile</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Provider</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Name</td>
+                <td>@user.Email</td>
+                <td>@user.Provider</td>
+            </tr>
+        }
+    </tbody>
+</table>

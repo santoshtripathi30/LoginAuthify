@@ -1,0 +1,3 @@
+﻿✔ Multi-Factor Authentication (MFA) – Optional security layer.
+✔ Session Management – Show active login sessions.
+✔ Audit Logs – Track login history for demo purposes.

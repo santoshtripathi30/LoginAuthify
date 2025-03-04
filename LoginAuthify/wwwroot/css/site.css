@@ -1,0 +1,68 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #343a40;
+    --text-light: #ffffff;
+    --background-light: #f8f9fa;
+    --font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-light);
+}
+
+.navbar {
+    background-color: var(--secondary-color);
+}
+
+.navbar-brand {
+    color: var(--text-light) !important;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: var(--text-light) !important;
+}
+
+.hero-section {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section p {
+        font-size: 1.2rem;
+    }
+.btn-auth {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-google {
+    background-color: #db4437;
+    color: var(--text-light);
+}
+
+.btn-github {
+    background-color: #333;
+    color: var(--text-light);
+}
+
+.btn-facebook {
+    background-color: #3b5998;
+    color: var(--text-light);
+}
+
+.info-text {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--secondary-color);
+}

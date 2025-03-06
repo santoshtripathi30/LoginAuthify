@@ -41,24 +41,75 @@ body {
     .hero-section p {
         font-size: 1.2rem;
     }
+
 .btn-auth {
-    width: 100%;
-    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    margin: 5px 0;
+    width: 250px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
 }
 
+    .btn-auth i {
+        margin-right: 10px;
+    }
+
+/* Google Button */
 .btn-google {
     background-color: #db4437;
-    color: var(--text-light);
 }
 
+    .btn-google:hover {
+        background-color: #c1351d;
+    }
+
+/* GitHub Button */
 .btn-github {
     background-color: #333;
-    color: var(--text-light);
 }
 
+    .btn-github:hover {
+        background-color: #222;
+    }
+
+/* Facebook Button */
 .btn-facebook {
-    background-color: #3b5998;
-    color: var(--text-light);
+    background-color: #1877f2;
+}
+
+    .btn-facebook:hover {
+        background-color: #155db2;
+    }
+
+/* Twitter Button */
+.btn-twitter {
+    background-color: #1da1f2;
+}
+
+    .btn-twitter:hover {
+        background-color: #0d8de0;
+    }
+/* LinkedIn Button */
+.btn-linkedin {
+    background-color: #0077b5;
+}
+
+    .btn-linkedin:hover {
+        background-color: #005582;
+    }
+.btn-jwt {
+    background-color: #f39c12;
+}
+
+.btn-auth i {
+    margin-right: 10px;
 }
 
 .info-text {
@@ -66,3 +117,69 @@ body {
     margin-top: 20px;
     color: var(--secondary-color);
 }
+.login-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+}
+
+    .login-container h2 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+.input-group {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+    .input-group input {
+        width: 100%;
+        padding: 12px;
+        padding-left: 40px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        outline: none;
+    }
+
+    .input-group i {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #888;
+        font-size: 16px;
+    }
+
+.login-btn {
+    width: 100%;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+    .login-btn:hover {
+        background-color: #e08e0b;
+    }
+
+.forgot-password {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+    text-decoration: none;
+}
+
+    .forgot-password:hover {
+        text-decoration: underline;
+    }

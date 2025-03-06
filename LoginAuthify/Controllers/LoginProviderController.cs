@@ -1,4 +1,5 @@
-﻿using LoginAuthify.Models;
+﻿using LoginAuthify.Common;
+using LoginAuthify.Models;
 
 using Microsoft.AspNetCore.Mvc;
 

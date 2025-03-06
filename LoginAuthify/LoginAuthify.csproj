@@ -7,9 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="JwtTokenGenerator.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Common\JwtTokenGenerator.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AspNet.Security.OAuth.Apple" Version="8.3.0" />
     <PackageReference Include="AspNet.Security.OAuth.Bitbucket" Version="8.3.0" />
     <PackageReference Include="AspNet.Security.OAuth.GitHub" Version="8.3.0" />
+    <PackageReference Include="AspNet.Security.OAuth.LinkedIn" Version="8.3.0" />
     <PackageReference Include="AspNet.Security.OAuth.Okta" Version="8.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="8.0.13" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.13" />

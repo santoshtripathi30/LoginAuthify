@@ -1,7 +1,7 @@
 ﻿@model ProviderSettingsVM
 
 <div class="container mt-4">
-    <h2 class="mb-4">Manage Authentication Providers</h2>
+    <h2 class="mb-4">Enable Authentication Providers</h2>
 
     <form method="post" action="/LoginProvider/update">
         <div class="row">
@@ -29,4 +29,7 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
+    <a href="/account/login" class="login-btn">
+        <i class="fas fa-user"></i> Go To Login Page
+    </a>
 }

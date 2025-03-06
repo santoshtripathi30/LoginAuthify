@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using LoginAuthify.Common;
+using LoginAuthify.Models;
+
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,16 +9,60 @@ using System.Security.Claims;
 
 namespace LoginAuthify.Controllers
 {
+    [Route("account")]
     public class AccountController : Controller
     {
+        private readonly IConfiguration _config;
+        public AccountController(IConfiguration config)
+        {
+            _config = config;
+        }
 
-        [HttpGet("account/login")]  // Explicit route for login page
+
+
+        [HttpGet("LoginWithThirdParty")]
+        public IActionResult LoginWithThirdParty()
+        {
+            return View("LoginWithThirdParty");
+        }
+
+        [HttpGet("login")]
         public IActionResult Login()
         {
             return View("Login");
         }
 
-        [HttpGet("account/login/{provider}")]  // Route with a provider parameter
+
+
+
+
+        [HttpPost("login")]
+        public IActionResult Login([FromBody] LoginVM model)
+        {
+            // Replace this with a real authentication service (e.g., Identity, EF Core)
+            if (model.EmailAddress.Equals("santosh", StringComparison.OrdinalIgnoreCase) && model.Password == "pass123")
+            {
+                var token = JwtTokenGenerator.GenerateToken(model.EmailAddress);
+
+                if (!string.IsNullOrEmpty(token))
+                {
+                    UserStore.AddUser(new UserProfile
+                    {
+                        Name = model.EmailAddress,
+                        Email = model.EmailAddress,
+                        Provider = "JWT",
+                        LoginTimeUtc = DateTime.UtcNow
+                    });
+                }
+
+                return Ok(new { token });
+            }
+
+            return Unauthorized("Invalid credentials");
+        }
+
+
+        [HttpGet("login/{provider}")]  // Route with a provider parameter
         public IActionResult ExternalLogin(string provider)
         {
             if (!LoginProviderSettings.IsProviderEnabled(provider))
@@ -23,13 +70,13 @@ namespace LoginAuthify.Controllers
                 return BadRequest("Authentication provider is disabled.");
             }
 
-            var redirectUrl = Url.Action("externallogincallback", "Account", null, Request.Scheme);
+            var redirectUrl = Url.Action("Externallogincallback", "Account", null, Request.Scheme);
             var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
             return Challenge(properties, provider);
         }
 
 
-        public async Task<IActionResult> externallogincallback()
+        public async Task<IActionResult> Externallogincallback()
         {
             var authResult = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
@@ -75,15 +122,7 @@ namespace LoginAuthify.Controllers
             return RedirectToAction("Profile");
         }
 
-
-
-        public IActionResult ExternalLogin()
-        {
-            return View();
-        }
-
-
-        [HttpGet("account/profile")]
+        [HttpGet("profile")]
         public IActionResult Profile()
         {
             var users = UserStore.GetAllUsers();

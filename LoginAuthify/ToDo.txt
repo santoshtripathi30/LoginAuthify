@@ -1,3 +1,55 @@
 ﻿✔ Multi-Factor Authentication (MFA) – Optional security layer.
 ✔ Session Management – Show active login sessions.
 ✔ Audit Logs – Track login history for demo purposes.
+
+
+===============================
+Social Login Providers
+===============================
+These providers allow users to log in using their social media accounts:
+
+Provider	Authentication Scheme					Package to Install								Callback Path
+
+Google		GoogleDefaults.AuthenticationScheme		Microsoft.AspNetCore.Authentication.Google		/signin-google	https://console.cloud.google.com
+Facebook	FacebookDefaults.AuthenticationScheme	Microsoft.AspNetCore.Authentication.Facebook	/signin-facebook
+GitHub		GitHubDefaults.AuthenticationScheme		AspNet.Security.OAuth.GitHub					---
+Twitter		TwitterDefaults.AuthenticationScheme	Microsoft.AspNetCore.Authentication.Twitter		/signin-twitter
+LinkedIn	Custom using OAuth						AspNet.Security.OAuth.LinkedIn					/signin-linkedin
+Apple		Custom using OAuth						AspNet.Security.OAuth.Apple						/signin-apple
+
+
+===============================
+Enterprise & Identity Providers
+===============================
+These providers are used for corporate authentication (SSO, Active Directory, etc.):
+
+Provider				Authentication Scheme						Package to Install									Callback Path
+
+Microsoft (Azure AD)	OpenIdConnectDefaults.AuthenticationScheme	Microsoft.AspNetCore.Authentication.OpenIdConnect	/signin-oidc
+Azure AD B2C			Custom (OIDC)								Microsoft.AspNetCore.Authentication.OpenIdConnect	/signin-aadb2c
+Okta					Custom (OIDC)								AspNet.Security.OAuth.Okta							/signin-okta
+Auth0					Custom (OIDC)								Microsoft.AspNetCore.Authentication.OpenIdConnect	/signin-auth0
+OneLogin				Custom (OIDC)								OIDC implementation required						/signin-onelogin
+Keycloak				Custom (OIDC)								OIDC implementation required						/signin-keycloak
+
+
+===============================
+Developer & Cloud Platforms
+===============================
+These providers are useful for developer authentication:
+
+Provider	Authentication Scheme				Package to Install					Callback Path
+GitHub		GitHubDefaults.AuthenticationScheme	AspNet.Security.OAuth.GitHub		/signin-github
+GitLab		Custom (OIDC)						AspNet.Security.OAuth.GitLab		/signin-gitlab
+Bitbucket	Custom (OAuth2)						AspNet.Security.OAuth.Bitbucket		/signin-bitbucket
+AWS Cognito	Custom (OIDC)						Amazon.AspNetCore.Identity.Cognito	/signin-cognito
+Firebase	Custom (OAuth2)						Custom (OAuth2 implementation required)	/signin-firebase
+
+
+===============================
+Traditional Authentication Methods
+===============================
+Provider				Authentication Scheme	Description
+Basic Authentication	BasicAuthenticationDefaults.AuthenticationScheme	Microsoft.AspNetCore.Authentication.JwtBearer	Uses username/password with HTTP Basic Auth
+JWT (JSON Web Token)	JwtBearerDefaults.AuthenticationScheme				Token-based authentication
+SAML 2.0				Custom (SAML)											Sustainsys.Saml2.AspNetCore2				Single Sign-On (SSO) using enterprise providers

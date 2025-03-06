@@ -18,6 +18,11 @@ namespace LoginAuthify.Controllers
         [HttpGet("account/login/{provider}")]  // Route with a provider parameter
         public IActionResult ExternalLogin(string provider)
         {
+            if (!LoginProviderSettings.IsProviderEnabled(provider))
+            {
+                return BadRequest("Authentication provider is disabled.");
+            }
+
             var redirectUrl = Url.Action("externallogincallback", "Account", null, Request.Scheme);
             var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
             return Challenge(properties, provider);
@@ -38,14 +43,15 @@ namespace LoginAuthify.Controllers
             var nameClaim = claims?.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
             var providerClaim = authResult.Properties?.Items[".AuthScheme"];
 
-            if (!string.IsNullOrEmpty(emailClaim))
+            if (!string.IsNullOrEmpty(providerClaim))
             {
                 // Store user details in memory
                 UserStore.AddUser(new UserProfile
                 {
                     Name = nameClaim,
                     Email = emailClaim,
-                    Provider = providerClaim
+                    Provider = providerClaim,
+                    LoginTimeUtc = DateTime.UtcNow
                 });
             }
 
@@ -54,12 +60,21 @@ namespace LoginAuthify.Controllers
         }
 
 
-        // Logout user
-        public async Task<IActionResult> Logout()
+        // Logout a specific user by provider
+        [HttpPost]
+        public async Task<IActionResult> Logout(string provider, string email)
         {
+            var user = UserStore.GetAllUsers().FirstOrDefault(u => u.Email == email && u.Provider == provider);
+            if (user != null)
+            {
+                // Remove user from session storage
+                UserStore.RemoveUser(email, provider);
+            }
+
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Profile");
         }
+
 
 
         public IActionResult ExternalLogin()
@@ -74,6 +89,5 @@ namespace LoginAuthify.Controllers
             var users = UserStore.GetAllUsers();
             return View(users);
         }
-
     }
 }

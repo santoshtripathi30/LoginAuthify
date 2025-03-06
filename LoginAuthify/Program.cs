@@ -7,8 +7,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-var googleClientId = "";
-var goolgeClientSecret = "";
+
+
+// Some browsers block OAuth responses due to strict SameSite cookie policies. Try relaxing the policy in Program.cs:
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    options.MinimumSameSitePolicy = SameSiteMode.Lax;
+});
+
+var authConfig = builder.Configuration.GetSection("Authentication");
 
 builder.Services.AddAuthentication(options =>
 {
@@ -20,12 +27,19 @@ builder.Services.AddAuthentication(options =>
         options.ExpireTimeSpan = TimeSpan.FromMinutes(30); // Extend session lifetime
         options.SlidingExpiration = true;
     })
-    .AddGoogle(googleOptions =>
-    {
-        googleOptions.ClientId = googleClientId;
-        googleOptions.ClientSecret = goolgeClientSecret;
-        googleOptions.CallbackPath = "/signin-google";
-    });
+
+.AddGoogle(googleOptions =>
+{
+    googleOptions.ClientId = authConfig["Google:ClientId"];
+    googleOptions.ClientSecret = authConfig["Google:ClientSecret"];
+    googleOptions.CallbackPath = "/signin-google";
+})
+.AddGitHub(githubOptions =>
+{
+    githubOptions.ClientId = authConfig["GitHub:ClientId"];
+    githubOptions.ClientSecret = authConfig["GitHub:ClientSecret"];
+    githubOptions.CallbackPath = "/signin-github";
+});
 
 
 var app = builder.Build();

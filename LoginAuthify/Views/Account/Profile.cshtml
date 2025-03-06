@@ -1,26 +1,38 @@
-﻿🔹 Displays logged-in user's email, profile picture, linked accounts.
-🔹 Allows users to manage their authentication methods.
+﻿<div class="container mt-4">
+    <h2 class="mb-3">Profile</h2>
 
-@model List<UserProfile>
-
-<h2>Profile</h2>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Provider</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var user in Model)
-        {
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
             <tr>
-                <td>@user.Name</td>
-                <td>@user.Email</td>
-                <td>@user.Provider</td>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Provider</th>
+                <th>Login Time (UTC)</th> 
+                <th>Action</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                    <td>@user.Provider</td>
+                    <td>@user.LoginTimeUtc.ToString("yyyy-MM-dd HH:mm:ss")</td> <!-- Display login time in UTC -->
+                    <td>
+                        <form method="post" action="/account/logout">
+                            <input type="hidden" name="provider" value="@user.Provider" />
+                            <input type="hidden" name="email" value="@user.Email" />
+                            <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Logout Button at the End -->
+    <div class="text-right mt-3">
+        <a href="/account/logout" class="btn btn-warning">Logout All</a>
+    </div>
+</div>
